@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @author xknower
  */
-public interface IMsg<T> {
+public interface IMsg {
 
     /**
      * 计算消息 Hash (根据消息唯一标识符)

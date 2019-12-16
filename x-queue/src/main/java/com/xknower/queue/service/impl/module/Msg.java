@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * @author xknower
  */
-public class Msg implements IMsg<String> {
+public class Msg implements IMsg {
 
     /**
      * 消息号 (消息唯一标识符)

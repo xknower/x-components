@@ -11,9 +11,14 @@
 
     <artifactId>x-astart</artifactId>
 
-
-
     <dependencies>
+        <dependency>
+            <groupId>com.xknower</groupId>
+            <artifactId>x-biz</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

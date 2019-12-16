@@ -3,6 +3,7 @@ package com.xknower.consume.service;
 import com.xknower.consume.module.IMsgAdapter;
 import com.xknower.consume.module.IMsgHandlerAdapter;
 import com.xknower.consume.module.MsgConsume;
+import com.xknower.queue.module.IMsg;
 import com.xknower.queue.module.IMsgQueue;
 import com.xknower.queue.module.IMsgQueueFactory;
 
@@ -75,7 +76,7 @@ public abstract class AbsMsgConsumeFactory {
     /**
      * 创建消费者 (afterPropertiesSet)
      */
-    public void init() {
+    protected void init() {
         // 创建消费者 (从 0开始 -> messageQueueCount)
         this.consumeList =
                 IntStream
@@ -90,5 +91,15 @@ public abstract class AbsMsgConsumeFactory {
     public void stop() {
         // 关闭并销毁, 所有消费者
         consumeList.forEach(is -> is.forEach(i -> i.stop(true)));
+    }
+
+    /**
+     * 压入消息队列
+     *
+     * @param msg
+     * @return
+     */
+    public IMsgQueue send(IMsg msg) {
+        return msgQueueFactory.send(msg);
     }
 }

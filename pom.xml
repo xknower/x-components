@@ -12,6 +12,7 @@
     <modules>
         <module>x-astart</module>
         <module>x-queue</module>
+        <module>x-biz</module>
     </modules>
 
     <parent>
