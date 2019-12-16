@@ -11,6 +11,7 @@
 
     <modules>
         <module>x-astart</module>
+        <module>x-queue</module>
     </modules>
 
     <parent>
