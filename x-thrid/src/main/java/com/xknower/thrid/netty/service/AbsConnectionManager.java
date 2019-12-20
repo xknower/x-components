@@ -59,11 +59,14 @@ public abstract class AbsConnectionManager<M extends ITMsg> {
             connectionService.connection(key, channel, ConnState.KEEP);
 
             try {
-                // 连接重置 (唯一标识符, 被多个终端连接使用) (一个TCP连接上行多个终端消息)
+                // 连接重置 (唯一标识符, 被多个终端连接使用) (终端重置TCP连接服务端未清除 | 一个上线终端, 由多个TCP连接传入数据)
                 String a = channel.localAddress().toString() + channel.remoteAddress().toString();
                 String b = channelCache.get(key).localAddress().toString() + channelCache.get(key).remoteAddress().toString();
                 if (!a.equalsIgnoreCase(b)) {
-                    System.out.println(String.format("连接切换 -> %s | %s | %s", key, a, b));
+                    System.out.println(String.format("连接切换 -> %s | %s -> %s", key, a, b));
+                    // 刷新连接缓存
+                    channel.attr(KEY).set(key);
+                    channelCache.put(key, channel);
                 }
             } catch (Exception e) {
                 System.out.println(String.format("Channel Error"));
