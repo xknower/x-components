@@ -13,6 +13,7 @@
         <module>x-astart</module>
         <module>x-queue</module>
         <module>x-biz</module>
+        <module>x-thrid</module>
     </modules>
 
     <parent>
