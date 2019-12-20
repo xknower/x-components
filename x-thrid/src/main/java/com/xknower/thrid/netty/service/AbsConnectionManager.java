@@ -106,6 +106,8 @@ public abstract class AbsConnectionManager<M extends ITMsg> {
         if (key != null) {
             // TCP 建立连接, 并在会话中已经缓存终端唯一标识符
             connectionService.connection(key, ctx.channel(), state);
+            // 移除连接缓存
+            channelCache.remove(key);
         } else {
             // TCP 连接不稳定, 未缓存会话标识就断开连接 (闪连闪断)
         }

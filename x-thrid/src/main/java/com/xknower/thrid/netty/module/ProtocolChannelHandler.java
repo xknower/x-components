@@ -56,15 +56,12 @@ public abstract class ProtocolChannelHandler<M extends ITMsg> extends SimpleChan
     protected abstract void handle(M msg);
 
     /**
-     * 连接关闭 (终端主动断开或者服务端终端断开)
-     *
-     * @param ctx
-     * @throws Exception
+     * Netty TCP 连接异常 , 及连接的释放流程 : exceptionCaught -> channelInactive -> channelUnregistered
      */
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        String.format("<== 连接关闭 [%s -> %s]", ctx.channel().localAddress(), ctx.channel().remoteAddress());
-
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        // java.io.IOException: 远程主机强迫关闭了一个现有的连接
+        //
         connectionManager.disconnection(ctx, ConnState.INACTIVE);
     }
 

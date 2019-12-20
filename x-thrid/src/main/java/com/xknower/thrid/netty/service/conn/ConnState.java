@@ -11,7 +11,7 @@ public enum ConnState {
     ACTIVE,
     // TCP 连接维持 (再次上行消息)
     KEEP,
-    // TCP连接断开  (终端主动断开或服务端主动断开)
+    // TCP连接断开  (终端主动断开)
     INACTIVE,
     // 连接超时 (服务端主动断开)
     TIMEOUT;
