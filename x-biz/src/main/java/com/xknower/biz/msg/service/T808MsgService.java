@@ -2,20 +2,21 @@ package com.xknower.biz.msg.service;
 
 import com.xknower.biz.msg.module.T808Msg;
 import com.xknower.biz.msg.module.queue.T808MsgConsumeFactory;
+import com.xknower.consume.service.AbsMsgConsumeFactory;
 import com.xknower.queue.module.IMsgQueue;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * 808 协议服务
  *
  * @author xknower
  */
-@Service
 public class T808MsgService {
 
-    @Autowired
-    private T808MsgConsumeFactory t808MsgConsumeFactory;
+    private AbsMsgConsumeFactory msgConsumeFactory;
+
+    public T808MsgService(T808MsgConsumeFactory t808MsgConsumeFactory) {
+        this.msgConsumeFactory = t808MsgConsumeFactory;
+    }
 
     /**
      * 压入消息到队列
@@ -24,7 +25,7 @@ public class T808MsgService {
      */
     public void send(T808Msg msg) {
         //
-        IMsgQueue iMsgQueue = this.t808MsgConsumeFactory.send(msg);
+        IMsgQueue iMsgQueue = this.msgConsumeFactory.send(msg);
         //
         System.out.println(String.format("消息 [%s %s %s] => 压入队列 [%s] ", msg.getOnlineNo(), msg.hash(), msg.type(), iMsgQueue.name()));
     }

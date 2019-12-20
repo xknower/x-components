@@ -7,7 +7,6 @@ import com.xknower.consume.module.IMsgHandlerAdapter;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -18,7 +17,6 @@ import java.util.Map;
  *
  * @author xknower
  */
-@Component
 public class T808MsgAdapter extends IMsgHandlerAdapter implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
