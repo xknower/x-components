@@ -29,4 +29,13 @@ public class Msg implements IMsg {
     public Serializable type() {
         return type;
     }
+
+    @Override
+    public byte[] serialization() {
+        return new byte[0];
+    }
+
+    @Override
+    public void deserialization(byte[] bytes) {
+    }
 }

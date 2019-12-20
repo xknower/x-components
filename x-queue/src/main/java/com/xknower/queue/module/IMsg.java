@@ -7,10 +7,10 @@ import java.io.Serializable;
  *
  * @author xknower
  */
-public interface IMsg {
+public interface IMsg extends IMsgSerializable {
 
     /**
-     * 计算消息 Hash (根据消息唯一标识符)
+     * 消息 Hash (消息唯一标识符)
      *
      * @return Hash 值
      */
